@@ -6,7 +6,11 @@ import com.ensayo.mapstrcut.domain.entites.UserEntity;
 import com.ensayo.mapstrcut.domain.repositories.UserRepository;
 import com.ensayo.mapstrcut.infrastructure.abstract_services.IUserService;
 import com.ensayo.mapstrcut.infrastructure.helpers.mappers.UserMapper;
+import com.ensayo.mapstrcut.utils.enums.exceptions.BadRequestException;
+import com.ensayo.mapstrcut.utils.messages.ErrorMessage;
+
 import lombok.AllArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -28,22 +32,27 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserResponse get(Long aLong) {
+    public UserResponse get(Long Long) {
+        return this.userMapper.toUserResponse(this.find(Long));
+    }
+
+    @Override
+    public UserResponse update(UserRequest request, Long Long) {
         return null;
     }
 
     @Override
-    public UserResponse update(UserRequest request, Long aLong) {
-        return null;
-    }
-
-    @Override
-    public void delete(Long aLong) {
+    public void delete(Long Long) {
 
     }
 
     @Override
     public Page<UserResponse> getAll(int Page, int size) {
         return null;
+    }
+
+    private UserEntity find(Long Long) {
+        return this.userRepository.findById(Long)
+                .orElseThrow(() -> new BadRequestException(ErrorMessage.idNotFound("servicio")));
     }
 }

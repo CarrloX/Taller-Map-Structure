@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ensayo.mapstrcut.utils.enums.RoleUser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Getter
@@ -17,11 +18,11 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false,unique = true)
     private String username;
     @Column(length = 100, nullable = false)
     private String password;
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false,unique = true)
     private String email;
     @Column(length = 100, nullable = false)
     private String full_name;
