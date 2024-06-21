@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-21T12:43:39-0500",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Amazon.com Inc.)"
+    date = "2024-06-21T15:40:35-0500",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
@@ -24,11 +24,11 @@ public class UserMapperImpl implements UserMapper {
 
         UserEntity.UserEntityBuilder userEntity = UserEntity.builder();
 
-        userEntity.username( userRequest.getUsername() );
-        userEntity.password( userRequest.getPassword() );
         userEntity.email( userRequest.getEmail() );
         userEntity.full_name( userRequest.getFull_name() );
+        userEntity.password( userRequest.getPassword() );
         userEntity.role( userRequest.getRole() );
+        userEntity.username( userRequest.getUsername() );
 
         return userEntity.build();
     }
@@ -41,12 +41,12 @@ public class UserMapperImpl implements UserMapper {
 
         UserResponse.UserResponseBuilder userResponse = UserResponse.builder();
 
-        userResponse.id( userEntity.getId() );
-        userResponse.username( userEntity.getUsername() );
-        userResponse.password( userEntity.getPassword() );
         userResponse.email( userEntity.getEmail() );
         userResponse.full_name( userEntity.getFull_name() );
+        userResponse.id( userEntity.getId() );
+        userResponse.password( userEntity.getPassword() );
         userResponse.role( userEntity.getRole() );
+        userResponse.username( userEntity.getUsername() );
 
         return userResponse.build();
     }
