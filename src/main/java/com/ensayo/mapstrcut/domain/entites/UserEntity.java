@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.ensayo.mapstrcut.utils.enums.RoleUser;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Getter
